@@ -14,7 +14,7 @@ A fully offline, client-side personnel identity management system themed for the
 
 ## Live Demo
 
-🔗 **[aditi.vercel.app](https://aditi.vercel.app)**
+🔗 **[aditi.vercel.app](https://aditi-indol.vercel.app)**
 
 *(Or open `index.html` locally to run offline)*
 
