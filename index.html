@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ADITI — Advanced Digital Interface for Tactical Identity. Secure, encrypted, offline-capable personnel management platform. Zero-dependency browser application.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#101210">
+<title>ADITI</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23181a18' stroke='%23c9a84c' stroke-width='3'/><text x='50' y='58' font-size='28' text-anchor='middle' fill='%23c9a84c' font-weight='bold'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SHELL 1: PUBLIC LANDING PAGE (No sidebar, full-width)
+     Visible to unauthenticated users
+     ══════════════════════════════════════════════════════════════ -->
+<div id="publicShell" aria-label="ADITI Public Landing">
+
+  <!-- TRICOLOR STRIPE -->
+  <div class="tricolor-stripe" aria-hidden="true">
+    <div class="t-saffron"></div>
+    <div class="t-white"></div>
+    <div class="t-green"></div>
+  </div>
+
+  <!-- PUBLIC TOPBAR -->
+  <header class="pub-topbar" role="banner">
+    <a class="pub-brand" href="#" onclick="pubNav('landing');return false" aria-label="ADITI Home">
+      <div class="mark" aria-hidden="true">A</div>
+      <div>
+        <span>ADITI</span>
+        <div class="brand-sub">Tactical Identity</div>
+      </div>
+    </a>
+    <nav class="pub-actions" aria-label="Public navigation">
+      <button class="btn-icon" id="pubThemeToggle" onclick="toggleTheme()" title="Toggle Field/HQ mode" aria-label="Toggle dark and light theme"></button>
+      <a class="btn" href="#login" onclick="pubNav('login');return false" role="button">Sign In</a>
+      <a class="btn btn-accent" href="#signup" onclick="pubNav('signup');return false" role="button">Sign Up</a>
+    </nav>
+  </header>
+
+  <!-- PUBLIC CONTENT -->
+  <main class="pub-content">
+    <div class="pub-inner">
+
+      <!-- ===== PUBLIC: LANDING PAGE ===== -->
+      <div class="pub-page active" id="pub-landing">
+
+        <div class="hero">
+          <div class="hero-insignia" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M5 19L19 5"/><path d="M15 5h4v4"/><path d="M19 19L5 5"/><path d="M9 5H5v4"/></svg></div>
+          <h1>ADITI</h1>
+          <div class="hero-hindi">Service Before Self · सेवा परमो धर्मः</div>
+          <div class="tagline">Advanced Digital Interface for Tactical Identity</div>
+          <p class="desc">
+            Classified personnel identity management system for the Indian Armed Forces.<br>
+            Designed for absolute operational security: fully offline-capable, zero external transmission, client-side encrypted local storage.<br><br>
+            In the highest traditions of the Army — <strong style="color:var(--gold)">Naam, Namak, Nishan.</strong>
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-accent btn-lg" href="#signup" onclick="pubNav('signup');return false" role="button">Sign Up</a>
+            <a class="btn btn-lg" href="#login" onclick="pubNav('login');return false" role="button">Sign In</a>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Features -->
+        <h2 class="section-label">Platform Capabilities</h2>
+        <div class="features-grid">
+          <div class="feat-cell">
+            <div class="ftitle">Secure Authentication</div>
+            <div class="fdesc">Multi-layer credential verification in accordance with Army security protocols. No data ever leaves the device.</div>
+          </div>
+          <div class="feat-cell">
+            <div class="ftitle">Local Persistence</div>
+            <div class="fdesc">All service records encrypted and retained exclusively in isolated browser storage. Fully functional in denied connectivity environments.</div>
+          </div>
+          <div class="feat-cell">
+            <div class="ftitle">Identity Management</div>
+            <div class="fdesc">Comprehensive service record encompassing rank, operational history ribbons, and authorised contact channels.</div>
+          </div>
+          <div class="feat-cell">
+            <div class="ftitle">Field / HQ Mode</div>
+            <div class="fdesc">Adaptive interface optimisation for field (dark) and headquarters (light) conditions. Preference retained across sessions.</div>
+          </div>
+          <div class="feat-cell">
+            <div class="ftitle">Command Center</div>
+            <div class="fdesc">High-density operational dashboard displaying real-time session status, readiness indicators, and authorised actions.</div>
+          </div>
+          <div class="feat-cell">
+            <div class="ftitle">Secure Comms</div>
+            <div class="fdesc">Encrypted dispatch submission system with categorised protocols. All dispatches stored locally only.</div>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Service Record Overview -->
+        <div class="info-grid">
+          <div class="card">
+            <div class="card-header"><h3>Service Record Fields</h3></div>
+            <table class="data-table">
+              <thead><tr><th>Field</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Full Name</td><td style="color:var(--success)">Required</td></tr>
+                <tr><td>Email (Service ID)</td><td style="color:var(--success)">Required</td></tr>
+                <tr><td>Rank</td><td style="color:var(--success)">Required</td></tr>
+                <tr><td>Password</td><td style="color:var(--success)">Required</td></tr>
+                <tr><td>Service Summary</td><td style="color:var(--text-tertiary)">Optional</td></tr>
+                <tr><td>Social Links</td><td style="color:var(--text-tertiary)">Optional</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h3>Technical Specifications</h3></div>
+            <table class="data-table">
+              <tbody>
+                <tr><td class="td-label">Architecture</td><td>Single-page HTML</td></tr>
+                <tr><td class="td-label">Storage</td><td>localStorage</td></tr>
+                <tr><td class="td-label">Dependencies</td><td>None</td></tr>
+                <tr><td class="td-label">Framework</td><td>Vanilla JS</td></tr>
+                <tr><td class="td-label">Network</td><td>Zero External Transmission</td></tr>
+                <tr><td class="td-label">Security</td><td>Encrypted Local Persistence (demo)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="card security-notice">
+          <p>
+            <strong>OPERATIONAL SECURITY DIRECTIVE</strong><br><br>
+            This system adheres to the principle of zero external transmission. All data remains encrypted on your local device. Compromise is impossible by design.<br><br>
+            Report any irregularity immediately via Secure Comms.<br><br>
+            <em style="color:var(--gold)">Service Before Self.</em>
+          </p>
+        </div>
+      </div>
+
+      <!-- ===== PUBLIC: LOGIN ===== -->
+      <div class="pub-page" id="pub-login">
+        <div class="auth-wrap">
+          <div class="auth-title">Sign In</div>
+          <div class="auth-sub">Access your classified service record</div>
+
+          <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+              <label for="login-email">Service ID / Email</label>
+              <input type="email" class="form-input" id="login-email" placeholder="name@domain.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="login-password">Security Passphrase</label>
+              <input type="password" class="form-input" id="login-password" placeholder="Enter security passphrase" required autocomplete="current-password">
+            </div>
+            <div id="login-error" class="form-error" style="display:none;margin-bottom:12px"></div>
+            <button type="submit" class="btn btn-accent btn-full btn-lg" style="margin-top:8px">Sign In</button>
+          </form>
+
+          <hr class="sep">
+          <div class="auth-footer">
+            Don't have an account? <a href="#signup" onclick="pubNav('signup');return false">Sign Up &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PUBLIC: SIGNUP ===== -->
+      <div class="pub-page" id="pub-signup">
+        <div class="auth-wrap">
+          <div class="auth-title">Sign Up</div>
+          <div class="auth-sub">Establish your official service record</div>
+
+          <form id="signupForm" onsubmit="handleSignup(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="signup-first">First Name</label>
+                <input type="text" class="form-input" id="signup-first" placeholder="First" required autocomplete="given-name">
+              </div>
+              <div class="form-group">
+                <label for="signup-last">Last Name</label>
+                <input type="text" class="form-input" id="signup-last" placeholder="Last" required autocomplete="family-name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Service ID / Email</label>
+              <input type="email" class="form-input" id="signup-email" placeholder="name@domain.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="signup-rank">Rank</label>
+              <select class="form-select" id="signup-rank" required>
+                <option value="">Select rank&hellip;</option>
+                <option>Lieutenant General</option>
+                <option>Major General</option>
+                <option>Brigadier</option>
+                <option>Colonel</option>
+                <option>Major</option>
+                <option>Captain</option>
+                <option>Lieutenant</option>
+                <option>Subedar Major</option>
+                <option>Subedar</option>
+                <option>Naib Subedar</option>
+                <option>Havaldar</option>
+                <option>Naik</option>
+                <option>Lance Naik</option>
+                <option>Soldier</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="signup-pass">Security Passphrase</label>
+              <input type="password" class="form-input" id="signup-pass" placeholder="Min 8 characters — alphanumeric recommended" required minlength="8" autocomplete="new-password">
+            </div>
+            <div class="form-group">
+              <label for="signup-confirm">Confirm Passphrase</label>
+              <input type="password" class="form-input" id="signup-confirm" placeholder="Re-enter passphrase" required autocomplete="new-password">
+            </div>
+            <div id="signup-error" class="form-error" style="display:none;margin-bottom:12px"></div>
+            <button type="submit" class="btn btn-accent btn-full btn-lg" style="margin-top:8px">Sign Up</button>
+          </form>
+
+          <hr class="sep">
+          <div class="auth-footer">
+            Already have an account? <a href="#login" onclick="pubNav('login');return false">Sign In &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- PUBLIC FOOTER -->
+  <footer class="pub-footer" role="contentinfo">
+    <p>&copy; 2026 ADITI — Advanced Digital Interface for Tactical Identity.<br>For the Indian Armed Forces. Naam, Namak, Nishan.</p>
+    <p class="motto">Jai Hind.</p>
+  </footer>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SHELL 2: ONBOARDING (Full-page, no sidebar — mandatory)
+     Visible after signup/login if user hasn't completed onboarding
+     ══════════════════════════════════════════════════════════════ -->
+<div id="onboardingShell" class="hidden" aria-label="Service Record Initialization">
+
+  <!-- TRICOLOR STRIPE -->
+  <div class="tricolor-stripe" aria-hidden="true">
+    <div class="t-saffron"></div>
+    <div class="t-white"></div>
+    <div class="t-green"></div>
+  </div>
+
+  <!-- ONBOARDING TOPBAR -->
+  <header class="ob-topbar" role="banner">
+    <div class="pub-brand" style="cursor:default">
+      <div class="mark" aria-hidden="true">A</div>
+      <div>
+        <span>ADITI</span>
+        <div class="brand-sub">Service Record Initialization</div>
+      </div>
+    </div>
+    <div class="pub-actions">
+      <button class="btn-icon" id="obThemeToggle" onclick="toggleTheme()" title="Toggle Field/HQ mode" aria-label="Toggle dark and light theme"></button>
+    </div>
+  </header>
+
+  <!-- ONBOARDING CONTENT -->
+  <main class="ob-main">
+    <div class="ob-container">
+      <!-- Welcome Banner -->
+      <div class="ob-welcome">
+        <h1>Welcome, <span id="ob-user-name">Personnel</span></h1>
+        <p>Your service record has been established. Complete operational initialization to access the Command Center.<br><br><em>The safety, honour, and welfare of your country come first, always and every time.</em></p>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="ob-steps">
+        <div class="ob-step active" id="ob-ind-1"><span class="ob-step-num">1</span><span class="ob-step-label">Contact Verification</span></div>
+        <div class="ob-step-line" id="ob-line-1"></div>
+        <div class="ob-step" id="ob-ind-2"><span class="ob-step-num">2</span><span class="ob-step-label">Operational History</span></div>
+      </div>
+
+      <!-- Step 1: Contact Details -->
+      <div class="ob-panel active" id="ob-step-1">
+        <div class="card">
+          <div class="card-header"><h2>Operational Contact Verification</h2></div>
+          <p class="form-hint" style="margin-bottom:16px">Step 1 — Verify operational contact details and current posting assignment</p>
+          <div class="form-group">
+            <label for="ob-phone">Official Contact Number</label>
+            <input type="tel" class="form-input" id="ob-phone" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+          <div class="form-group">
+            <label for="ob-location">Current Post / Location</label>
+            <select class="form-select" id="ob-location" required>
+              <option value="">Select posting&hellip;</option>
+              <option>HQ Northern Command</option>
+              <option>HQ Western Command</option>
+              <option>HQ Eastern Command</option>
+              <option>HQ Southern Command</option>
+              <option>HQ Central Command</option>
+              <option>Army HQ, New Delhi</option>
+              <option>Forward Post — LoC Sector</option>
+              <option>Forward Post — LAC Sector</option>
+              <option>High Altitude Area — Siachen</option>
+              <option>Counter Insurgency Zone — NE</option>
+              <option>Training Command</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label for="ob-regiment">Regiment</label>
+            <select class="form-select" id="ob-regiment" required onchange="previewWarCry()">
+              <option value="">Select regiment&hellip;</option>
+              <option data-cry="Bharat Mata Ki Jai" data-trans="Victory to Mother India">Universal / All Ranks</option>
+              <option data-cry="Jai Mahakali, Ayo Gorkhali" data-trans="Victory to Goddess Mahakali, Here come the Gorkhas">Gorkha Rifles</option>
+              <option data-cry="Jo Bole So Nihal, Sat Sri Akal" data-trans="He who cries shall be blessed, Eternal is the Almighty">Punjab / Sikh / Sikh LI Regiment</option>
+              <option data-cry="Raja Ramchandra Ki Jai" data-trans="Victory to King Ramchandra">Rajputana Rifles</option>
+              <option data-cry="Bol Bajrang Bali Ki Jai" data-trans="Say Victory to Lord Hanuman">Rajput Regiment</option>
+              <option data-cry="Veera Madrassi, Adi Kollu, Adi Kollu" data-trans="Brave Madrassi, Strike and Kill">Madras Regiment</option>
+              <option data-cry="Badri Vishal Ki Jai" data-trans="Victory to the Great Lord Badri Nath">Garhwal Rifles</option>
+              <option data-cry="Kalika Mata Ki Jai" data-trans="Victory to Goddess Kalika">Kumaon Regiment (incl. Naga)</option>
+              <option data-cry="Jwala Mata Ki Jai" data-trans="Victory to Goddess Jwala">Dogra Regiment</option>
+              <option data-cry="Sarvada Shaktishali" data-trans="Ever Powerful">The Grenadiers</option>
+              <option data-cry="Bol Shri Chhatrapati Shivaji Maharaj Ki Jai" data-trans="Victory to King Shivaji Maharaj">Maratha Light Infantry</option>
+              <option data-cry="Jat Balwan, Jai Bhagwan" data-trans="The Jat is Strong, Victory to God">Jat Regiment</option>
+              <option data-cry="Balidan Param Dharma" data-trans="Sacrifice is the Supreme Duty">Parachute Regiment</option>
+            </select>
+            <div class="form-hint war-cry-preview" id="ob-cry-preview"></div>
+          </div>
+        </div>
+
+        <div class="ob-nav-actions" style="justify-content:flex-end">
+          <button class="btn btn-accent btn-lg" onclick="obNext()">Continue</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Mission Selector -->
+      <div class="ob-panel" id="ob-step-2">
+        <div class="card" style="padding-bottom:16px">
+          <div class="card-header"><h2>Operational History</h2></div>
+          <p class="form-hint" style="margin-bottom:16px">Step 2 — Select operational deployments from your service history</p>
+
+          <div class="mission-grid" id="missionGrid">
+            <div class="mission-card" data-mission="Operation Vijay (Kargil)">
+              <div class="mc-title">Operation Vijay</div>
+              <div class="mc-sub">Kargil, 1999</div>
+            </div>
+            <div class="mission-card" data-mission="Counter Insurgency (CI Ops)">
+              <div class="mc-title">Counter Insurgency</div>
+              <div class="mc-sub">CI Ops</div>
+            </div>
+            <div class="mission-card" data-mission="UN Peacekeeping">
+              <div class="mc-title">UN Peacekeeping</div>
+              <div class="mc-sub">International Deployment</div>
+            </div>
+            <div class="mission-card" data-mission="Siachen Glacier Deployment">
+              <div class="mc-title">Siachen Glacier</div>
+              <div class="mc-sub">High Altitude Ops</div>
+            </div>
+            <div class="mission-card" data-mission="Disaster Relief (HADR)">
+              <div class="mc-title">Disaster Relief</div>
+              <div class="mc-sub">HADR Operations</div>
+            </div>
+            <div class="mission-card" data-mission="Cyber Warfare Division">
+              <div class="mc-title">Cyber Warfare</div>
+              <div class="mc-sub">Digital Operations</div>
+            </div>
+            <div class="mission-card" data-mission="Border Security">
+              <div class="mc-title">Border Security</div>
+              <div class="mc-sub">Frontier Defence</div>
+            </div>
+          </div>
+
+          <div class="ob-selection-count" id="obSelCount">0 deployments selected</div>
+        </div>
+
+        <div class="ob-nav-actions">
+          <button class="btn" onclick="obBack()">Back</button>
+          <button class="btn btn-accent btn-lg" onclick="obFinish()">Complete Initialization</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ONBOARDING FOOTER -->
+  <footer class="ob-footer" role="contentinfo">
+    <p>All data encrypted — stored locally on your device. Zero external transmission.</p>
+  </footer>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     LOADING SHELL: Transition screen between onboarding and dashboard
+     ══════════════════════════════════════════════════════════════ -->
+<div id="loadingShell" class="hidden" aria-label="Loading Command Center">
+  <div class="loading-content">
+    <div class="loading-insignia">
+      <div class="loading-ring"></div>
+      <div class="loading-star"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1"><circle cx="20" cy="20" r="17"/><circle cx="20" cy="20" r="5"/><line x1="20" y1="3" x2="20" y2="15"/><line x1="20" y1="25" x2="20" y2="37"/><line x1="3" y1="20" x2="15" y2="20"/><line x1="25" y1="20" x2="37" y2="20"/><line x1="8" y1="8" x2="14.5" y2="14.5"/><line x1="25.5" y1="25.5" x2="32" y2="32"/><line x1="32" y1="8" x2="25.5" y2="14.5"/><line x1="14.5" y1="25.5" x2="8" y2="32"/></svg></div>
+    </div>
+    <h1 class="loading-title">Initializing Command Center</h1>
+    <p class="loading-sub">Establishing secure operational environment&hellip;</p>
+    <div class="loading-bar-track">
+      <div class="loading-bar-fill"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     SHELL 3: AUTHENTICATED APP (Sidebar + Dashboard)
+     Visible only after onboarding is complete
+     ══════════════════════════════════════════════════════════════ -->
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeSidebar()" role="presentation" aria-hidden="true"></div>
+
+<div id="appShell">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <a class="sidebar-brand" href="#dashboard" onclick="navigate('dashboard');return false" aria-label="ADITI Dashboard">
+      <div class="mark" aria-hidden="true">A</div>
+      <span>ADITI</span>
+      <small></small>
+    </a>
+
+    <div class="sidebar-insignia" aria-hidden="true">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="0.8">
+        <circle cx="20" cy="20" r="17"/>
+        <circle cx="20" cy="20" r="5"/>
+        <line x1="20" y1="3" x2="20" y2="15"/>
+        <line x1="20" y1="25" x2="20" y2="37"/>
+        <line x1="3" y1="20" x2="15" y2="20"/>
+        <line x1="25" y1="20" x2="37" y2="20"/>
+        <line x1="8" y1="8" x2="14.5" y2="14.5"/>
+        <line x1="25.5" y1="25.5" x2="32" y2="32"/>
+        <line x1="32" y1="8" x2="25.5" y2="14.5"/>
+        <line x1="14.5" y1="25.5" x2="8" y2="32"/>
+      </svg>
+    </div>
+
+    <nav class="sidebar-nav" role="navigation" aria-label="App navigation">
+      <div class="nav-section-label" id="nav-ops-label">Operations</div>
+      <ul role="list" aria-labelledby="nav-ops-label" style="list-style:none">
+        <li><a class="nav-item active" data-page="dashboard" href="#dashboard" onclick="navigate('dashboard');return false" role="link">
+          <span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="1.5" width="5" height="5" rx=".5"/><rect x="9.5" y="1.5" width="5" height="5" rx=".5"/><rect x="1.5" y="9.5" width="5" height="5" rx=".5"/><rect x="9.5" y="9.5" width="5" height="5" rx=".5"/></svg></span> Command Center
+        </a></li>
+        <li><a class="nav-item" data-page="profile" href="#profile" onclick="navigate('profile');return false" role="link">
+          <span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5.5" r="2.5"/><path d="M3 14.5c0-2.8 2.2-5 5-5s5 2.2 5 5"/></svg></span> Service Record
+        </a></li>
+      </ul>
+
+      <div class="nav-section-label" id="nav-res-label">Resources</div>
+      <ul role="list" aria-labelledby="nav-res-label" style="list-style:none">
+        <li><a class="nav-item" data-page="about" href="#about" onclick="navigate('about');return false" role="link">
+          <span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 7.5v4" stroke-linecap="round"/><circle cx="8" cy="5.2" r=".7" fill="currentColor" stroke="none"/></svg></span> System Directive
+        </a></li>
+        <li><a class="nav-item" data-page="contact" href="#contact" onclick="navigate('contact');return false" role="link">
+          <span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h12v8H5l-3 3V3z"/></svg></span> Secure Comms
+        </a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a class="user-pill" href="#profile" onclick="navigate('profile');return false" aria-label="View your profile">
+        <div class="avatar-sm" id="sidebar-avatar" aria-hidden="true">?</div>
+        <div style="flex:1;min-width:0">
+          <div class="uname" id="sidebar-name">&mdash;</div>
+          <div class="urole"><span id="sidebar-role">&mdash;</span><span id="sidebar-rank-insignia" class="rank-insignia"></span></div>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main" role="main">
+    <!-- TRICOLOR STRIPE -->
+    <div class="tricolor-stripe" aria-hidden="true">
+      <div class="t-saffron"></div>
+      <div class="t-white"></div>
+      <div class="t-green"></div>
+    </div>
+    <header class="topbar" role="banner">
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="btn-icon mobile-menu-btn" onclick="toggleSidebar()" style="display:none" aria-label="Open navigation menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4h12M2 8h12M2 12h12"/></svg></button>
+        <span class="topbar-title" id="topbar-title">Command Center</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn-icon" id="appThemeToggle" onclick="toggleTheme()" title="Toggle Field/HQ mode" aria-label="Toggle dark and light theme"></button>
+        <button class="btn btn-ghost" onclick="logout()" aria-label="Terminate active session">Terminate Session</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="content-inner">
+
+        <!-- ========== DASHBOARD ========== -->
+        <div class="page" id="page-dashboard">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Command Center</h1>
+              <p class="page-subtitle">Operational Status — <span id="dash-time"></span></p>
+            </div>
+            <button class="btn" onclick="navigate('profile')">View Service Record</button>
+          </div>
+
+          <div class="stat-grid">
+
+            <div class="motivation-banner" id="dash-warcry-banner" style="grid-column:1/-1">
+              <div class="wc-cry" id="dash-warcry">&mdash;</div>
+              <div class="wc-trans" id="dash-warcry-trans"></div>
+              <div class="wc-motto">Service Before Self</div>
+            </div>
+
+            <div class="stat-cell">
+              <div class="label">Personnel</div>
+              <div class="value accent" id="dash-name">&mdash;</div>
+              <div class="sub"><span id="dash-rank">&mdash;</span><span id="dash-rank-insignia" class="rank-insignia"></span></div>
+            </div>
+            <div class="stat-cell">
+              <div class="label">Status</div>
+              <div class="value accent status-dot">&bull;</div>
+              <div class="sub">Operational</div>
+            </div>
+            <div class="stat-cell">
+              <div class="label">Security</div>
+              <div class="value check-mark">&check;</div>
+              <div class="sub">Isolated &middot; Encrypted</div>
+            </div>
+            <div class="stat-cell">
+              <div class="label">Readiness</div>
+              <div class="value check-mark">&check;</div>
+              <div class="sub">Service Record Complete</div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:16px">
+            <div class="card-header"><h2>Active Session Intel</h2></div>
+            <table class="data-table">
+              <tbody>
+                <tr><td class="td-label">Service ID</td><td id="dash-email">&mdash;</td></tr>
+                <tr><td class="td-label">Rank</td><td id="dash-rank2">&mdash;</td></tr>
+                <tr><td class="td-label">Session Started</td><td id="dash-session">&mdash;</td></tr>
+                <tr><td class="td-label">Enrolled</td><td id="dash-created">&mdash;</td></tr>
+                <tr><td class="td-label">Storage</td><td>Encrypted Local Storage</td></tr>
+                <tr><td class="td-label">Connectivity</td><td>Zero External Transmission — Field Operational</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Service Ribbons (Missions) -->
+          <div id="dash-missions" style="display:none;margin-bottom:16px">
+            <div class="card">
+              <div class="card-header"><h2>Service Ribbons</h2></div>
+              <div class="ribbon-row" id="dash-ribbon-row"></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h2>Tactical Operations</h2></div>
+            <div class="quick-actions">
+              <button class="btn" onclick="navigate('profile')">Update Service Record</button>
+              <button class="btn" onclick="navigate('contact')">Submit Secure Dispatch</button>
+              <button class="btn" onclick="navigate('about')">View System Directive</button>
+              <button class="btn btn-danger" onclick="logout()">Terminate Session</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== PROFILE ========== -->
+        <div class="page" id="page-profile">
+          <div class="page-header">
+            <h1 class="page-title">Service Record</h1>
+            <button class="btn" id="btn-edit-toggle" onclick="toggleEdit()">Update Record</button>
+          </div>
+
+          <!-- Edit Lock Banner -->
+          <div id="editLockBanner" class="edit-lock-banner" style="display:none">
+            <div class="lock-title">UPDATE AUTHORITY EXHAUSTED</div>
+            <div class="lock-desc">Maximum revisions utilised. Submit formal dispatch via <a href="#contact" onclick="navigate('contact');return false">Secure Comms</a> for any further amendments.</div>
+          </div>
+
+          <!-- Display -->
+          <div id="profileDisplay">
+            <div class="profile-card">
+              <div class="profile-avatar" id="p-avatar">?</div>
+              <div class="profile-info">
+                <h2 id="p-name">&mdash;</h2>
+                <div class="rank-badge" id="p-rank">&mdash;</div><span id="p-rank-insignia" class="rank-insignia"></span>
+                <div class="regiment-info" id="p-regiment-info" style="display:none">
+                  <div class="p-regiment-name" id="p-regiment"></div>
+                  <div class="p-regiment-cry" id="p-warcry"></div>
+                  <div class="p-regiment-trans" id="p-warcry-trans"></div>
+                </div>
+                <div class="sid" id="p-sid">&mdash;</div>
+                <div class="ribbon-row" id="p-ribbon-row" style="margin-top:8px"></div>
+                <div class="bio" id="p-bio">No service summary filed.</div>
+                <div class="social-row" id="p-socials"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><h3>Personnel Details</h3></div>
+              <table class="data-table">
+                <tbody>
+                  <tr><td class="td-label">Email</td><td id="p-email">&mdash;</td></tr>
+                  <tr><td class="td-label">Rank</td><td id="p-rank2">&mdash;</td></tr>
+                  <tr><td class="td-label">Enrolled</td><td id="p-created">&mdash;</td></tr>
+                  <tr><td class="td-label">Modifications Logged</td><td id="p-edits">0 / 3</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Edit -->
+          <div id="profileEdit" style="display:none">
+            <div class="edits-remaining" id="editsRemaining" style="margin-bottom:16px">Update Service Record — Authorisations remaining: <span class="count" id="editsLeft">3</span> of 3</div>
+
+            <div class="card" style="margin-bottom:16px">
+              <div class="card-header"><h3>Personnel Identification Photo</h3></div>
+              <div class="form-group" style="margin-bottom:0">
+                <div class="pfp-upload">
+                  <div class="pfp-preview" id="pfp-preview">?</div>
+                  <div class="pfp-actions">
+                    <div class="file-input-wrap">
+                      <button class="btn" type="button" aria-label="Upload identification photo">Upload Photo</button>
+                      <input type="file" id="edit-pfp" accept="image/*" onchange="handlePfpUpload(event)" aria-label="Choose profile picture file">
+                    </div>
+                    <button class="btn btn-ghost" type="button" onclick="removePfp()" style="margin-left:6px" aria-label="Remove profile picture">Remove</button>
+                    <div class="form-hint">Max 200KB. JPG, PNG, or WebP.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-bottom:16px">
+              <div class="card-header"><h3>Personnel Details</h3></div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="edit-first">First Name</label>
+                  <input type="text" class="form-input" id="edit-first" placeholder="First name" required autocomplete="given-name">
+                </div>
+                <div class="form-group">
+                  <label for="edit-last">Last Name</label>
+                  <input type="text" class="form-input" id="edit-last" placeholder="Last name" required autocomplete="family-name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="edit-rank">Rank</label>
+                <select class="form-select" id="edit-rank">
+                  <option>Lieutenant General</option>
+                  <option>Major General</option>
+                  <option>Brigadier</option>
+                  <option>Colonel</option>
+                  <option>Major</option>
+                  <option>Captain</option>
+                  <option>Lieutenant</option>
+                  <option>Subedar Major</option>
+                  <option>Subedar</option>
+                  <option>Naib Subedar</option>
+                  <option>Havaldar</option>
+                  <option>Naik</option>
+                  <option>Lance Naik</option>
+                  <option>Soldier</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card" style="margin-bottom:16px">
+              <div class="card-header"><h3>Service Summary</h3></div>
+              <div class="form-group" style="margin-bottom:0">
+                <label for="edit-bio">Service Summary &amp; Background</label>
+                <textarea class="form-textarea" id="edit-bio" placeholder="Service summary, operational background, and professional qualifications…" maxlength="500" style="min-height:100px"></textarea>
+                <div class="form-hint"><span id="bio-count">0</span>/500</div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-bottom:16px">
+              <div class="card-header"><h3>External Communication Channels</h3></div>
+              <div class="form-group">
+                <label for="edit-linkedin">LinkedIn</label>
+                <input type="url" class="form-input" id="edit-linkedin" placeholder="https://linkedin.com/in/…" autocomplete="url">
+              </div>
+              <div class="form-group">
+                <label for="edit-instagram">Instagram</label>
+                <input type="url" class="form-input" id="edit-instagram" placeholder="https://instagram.com/…" autocomplete="url">
+              </div>
+              <div class="form-group">
+                <label for="edit-facebook">Facebook</label>
+                <input type="url" class="form-input" id="edit-facebook" placeholder="https://facebook.com/…" autocomplete="url">
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label for="edit-x">X (Twitter)</label>
+                <input type="url" class="form-input" id="edit-x" placeholder="https://x.com/…" autocomplete="url">
+              </div>
+            </div>
+            <div class="profile-save-actions">
+              <button class="btn btn-accent" onclick="saveProfile()">Save Changes</button>
+              <button class="btn" onclick="toggleEdit()">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== ABOUT ========== -->
+        <div class="page" id="page-about">
+          <div style="margin-bottom:24px">
+            <h1 class="page-title">System Directive — ADITI</h1>
+            <p class="page-subtitle">Advanced Digital Interface for Tactical Identity</p>
+          </div>
+
+          <div class="card prose" style="margin-bottom:20px">
+            <div class="card-header"><h2>Mission Statement</h2></div>
+            <p>ADITI is built in the highest traditions of the Indian Army — selfless service, unwavering honour, absolute security.</p>
+            <p><em>&ldquo;The safety, honour, and welfare of your country come first, always and every time.&rdquo;</em></p>
+            <p>This system ensures your tactical identity remains protected in every operational environment.</p>
+          </div>
+
+          <div class="value-grid">
+            <div class="value-cell">
+              <div class="vtitle">Zero Transmission</div>
+              <div class="vdesc">All data stays on-device. No servers, no tracking. Fully isolated.</div>
+            </div>
+            <div class="value-cell">
+              <div class="vtitle">Instant Response</div>
+              <div class="vdesc">Every action resolves in under 16ms. Battle-ready performance.</div>
+            </div>
+            <div class="value-cell">
+              <div class="vtitle">Offline First</div>
+              <div class="vdesc">Full functionality without network. Field operational.</div>
+            </div>
+          </div>
+
+          <div class="card prose" style="margin-bottom:20px">
+            <div class="card-header"><h2>Design Language &amp; Protocol</h2></div>
+            <p>ADITI follows the "Indian Military Tactical" design language — inspired by Indian Armed Forces command systems and field operation displays:</p>
+            <ul>
+              <li>Earthy neutral backgrounds with warm gold accents — professional military aesthetics</li>
+              <li>Strict borders for all containers — precision and structure</li>
+              <li>High-contrast typography optimized for readability across all conditions</li>
+              <li>Indian tricolor accents integrated into the interface header</li>
+              <li>Dense information layout optimized for rapid cognition and decision-making</li>
+            </ul>
+          </div>
+
+          <!-- ===== REGIMENTAL WAR CRIES ===== -->
+          <div class="card prose" style="margin-bottom:20px">
+            <div class="card-header"><h2>Regimental War Cries (Jaighosh)</h2></div>
+            <p>The war cry is the living spirit of a regiment — a sacred invocation carried into battle. Each cry embodies the <strong style="color:var(--gold)">Naam</strong> (honour of the regiment), <strong style="color:var(--gold)">Namak</strong> (loyalty), and <strong style="color:var(--gold)">Nishan</strong> (the colours under which we serve).</p>
+            <table class="data-table" style="margin-top:12px">
+              <thead><tr><th>Regiment</th><th>War Cry</th><th>Translation</th></tr></thead>
+              <tbody>
+                <tr><td>Universal / All Ranks</td><td style="color:var(--gold);font-style:italic">Bharat Mata Ki Jai</td><td>Victory to Mother India</td></tr>
+                <tr><td>Gorkha Rifles</td><td style="color:var(--gold);font-style:italic">Jai Mahakali, Ayo Gorkhali</td><td>Victory to Goddess Mahakali, Here come the Gorkhas</td></tr>
+                <tr><td>Punjab / Sikh / Sikh LI</td><td style="color:var(--gold);font-style:italic">Jo Bole So Nihal, Sat Sri Akal</td><td>He who cries shall be blessed, Eternal is the Almighty</td></tr>
+                <tr><td>Rajputana Rifles</td><td style="color:var(--gold);font-style:italic">Raja Ramchandra Ki Jai</td><td>Victory to King Ramchandra</td></tr>
+                <tr><td>Rajput Regiment</td><td style="color:var(--gold);font-style:italic">Bol Bajrang Bali Ki Jai</td><td>Say Victory to Lord Hanuman</td></tr>
+                <tr><td>Madras Regiment</td><td style="color:var(--gold);font-style:italic">Veera Madrassi, Adi Kollu, Adi Kollu</td><td>Brave Madrassi, Strike and Kill</td></tr>
+                <tr><td>Garhwal Rifles</td><td style="color:var(--gold);font-style:italic">Badri Vishal Ki Jai</td><td>Victory to the Great Lord Badri Nath</td></tr>
+                <tr><td>Kumaon Regiment (incl. Naga)</td><td style="color:var(--gold);font-style:italic">Kalika Mata Ki Jai</td><td>Victory to Goddess Kalika</td></tr>
+                <tr><td>Dogra Regiment</td><td style="color:var(--gold);font-style:italic">Jwala Mata Ki Jai</td><td>Victory to Goddess Jwala</td></tr>
+                <tr><td>The Grenadiers</td><td style="color:var(--gold);font-style:italic">Sarvada Shaktishali</td><td>Ever Powerful</td></tr>
+                <tr><td>Maratha Light Infantry</td><td style="color:var(--gold);font-style:italic">Bol Shri Chhatrapati Shivaji Maharaj Ki Jai</td><td>Victory to King Shivaji Maharaj</td></tr>
+                <tr><td>Jat Regiment</td><td style="color:var(--gold);font-style:italic">Jat Balwan, Jai Bhagwan</td><td>The Jat is Strong, Victory to God</td></tr>
+                <tr><td>Parachute Regiment</td><td style="color:var(--gold);font-style:italic">Balidan Param Dharma</td><td>Sacrifice is the Supreme Duty</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card prose">
+            <div class="card-header"><h2>Technical Specifications</h2></div>
+            <table class="data-table">
+              <tbody>
+                <tr><td class="td-label">Architecture</td><td>Single-page, zero-dependency HTML</td></tr>
+                <tr><td class="td-label">Storage</td><td>Encrypted Local Storage (Browser API)</td></tr>
+                <tr><td class="td-label">Dependencies</td><td>None (Inter font via CDN)</td></tr>
+                <tr><td class="td-label">Framework</td><td>Vanilla JS — zero build step</td></tr>
+                <tr><td class="td-label">Compatibility</td><td>Chrome, Firefox, Edge, Safari</td></tr>
+                <tr><td class="td-label">Security Model</td><td>Encrypted Local Persistence (demo)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ===== DEVELOPER ===== -->
+          <div class="developer-section">
+            <h2 class="section-label">Developer</h2>
+
+            <div class="card developer-card">
+              <div style="margin-bottom:14px">
+                <h3 class="developer-name">Aditya Bachhav</h3>
+                <p class="developer-role">Computer Engineering · Data Science</p>
+              </div>
+
+              <div class="dev-contact-pills">
+                <span class="dev-pill">aditya.bachhav.00@gmail.com</span>
+                <span class="dev-pill">+91 8347136985</span>
+                <a href="https://www.linkedin.com/in/aditya-b-659a47293/" target="_blank" rel="noopener" class="dev-pill dev-pill-accent">LinkedIn</a>
+              </div>
+
+              <p class="developer-bio">
+                Undergraduate Computer Engineering student with a focus on data science. Experienced in Python-based data analysis, exploratory data analysis, statistical modeling, and full-stack web development. Committed to building clean, functional, and user-centered applications.
+              </p>
+
+              <div style="margin-bottom:14px">
+                <h4 class="dev-section-title">Core Competencies</h4>
+                <ul class="dev-competency-list">
+                  <li><span class="list-marker">&#9656;</span> Data analysis and visualization — Pandas, NumPy, Matplotlib</li>
+                  <li><span class="list-marker">&#9656;</span> Front-end development — HTML, CSS, JavaScript (vanilla)</li>
+                  <li><span class="list-marker">&#9656;</span> Database management — SQL, MongoDB</li>
+                  <li><span class="list-marker">&#9656;</span> UI/UX design and prototyping — Figma, Framer</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="dev-section-title">Technology Stack</h4>
+                <div class="tech-stack-grid">
+                  <span class="tech-tag tech-tag-accent">Python</span>
+                  <span class="tech-tag tech-tag-accent">JavaScript</span>
+                  <span class="tech-tag tech-tag-accent">HTML/CSS</span>
+                  <span class="tech-tag tech-tag-accent">SQL</span>
+                  <span class="tech-tag tech-tag-accent">MongoDB</span>
+                  <span class="tech-tag">Git</span>
+                  <span class="tech-tag">Figma</span>
+                  <span class="tech-tag">AI/ML</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="dev-footer-note">
+              Built from scratch — zero frameworks, zero dependencies, vanilla HTML/CSS/JS.
+            </p>
+          </div>
+        </div>
+
+        <!-- ========== CONTACT ========== -->
+        <div class="page" id="page-contact">
+          <div style="margin-bottom:24px">
+            <h1 class="page-title">Secure Comms</h1>
+            <p class="page-subtitle">Submit Encrypted Dispatch</p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="card">
+              <div class="card-header"><h2>Transmit Dispatch</h2></div>
+              <form id="contactForm" onsubmit="handleContact(event)">
+                <div class="form-group">
+                  <label for="contact-name">Personnel Name</label>
+                  <input type="text" class="form-input" id="contact-name" placeholder="Full name (as per service record)" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Service ID / Email</label>
+                  <input type="email" class="form-input" id="contact-email" placeholder="name@domain.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                  <label for="contact-subject">Dispatch Category</label>
+                  <select class="form-select" id="contact-subject" required>
+                    <option value="">Select category&hellip;</option>
+                    <option>Technical Malfunction</option>
+                    <option>Personnel Record Inquiry</option>
+                    <option>Enhancement Request</option>
+                    <option>Security Incident Report</option>
+                    <option>Operational Assessment</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="contact-message">Dispatch Content</label>
+                  <textarea class="form-textarea" id="contact-message" placeholder="Detail your dispatch — include relevant operational context…" required style="min-height:100px"></textarea>
+                </div>
+                <p class="form-hint" style="margin-bottom:12px">Dispatches are encrypted client-side and retained locally only. Zero transmission.</p>
+                <button type="submit" class="btn btn-accent btn-full">Submit Dispatch</button>
+              </form>
+            </div>
+
+            <div>
+              <div class="card" style="margin-bottom:16px">
+                <div class="card-header"><h2>Transmission Protocol</h2></div>
+                <table class="data-table">
+                  <tbody>
+                    <tr><td class="td-label">Platform</td><td>ADITI</td></tr>
+                    <tr><td class="td-label">Classification</td><td>Offline tactical utility</td></tr>
+                    <tr><td class="td-label">Storage</td><td>Dispatches archived locally — zero transmission</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card">
+                <div class="card-header"><h2>Dispatches <span id="msg-count" class="msg-count-badge"></span></h2></div>
+                <div id="contact-messages" class="messages-list">No dispatches in archive.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
